@@ -1,0 +1,6 @@
+.content-page{
+  &__contact{
+    @include flex();
+    align-items: center;
+  }
+}
