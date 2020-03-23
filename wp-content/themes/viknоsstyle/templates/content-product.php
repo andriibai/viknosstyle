@@ -1,29 +1,21 @@
+<?php if( have_rows('review') ): ?>
 <section class="product">
     <div class="wrapper">
-        <h2 class="title">Віконі констукції</h2>
+        <h2 class="title"><?php the_title(); ?></h2>
         <div class="product__content">
-            <div class="product__item">
-                <div class="product__image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/prod/img/about.jpg" alt="">
-                </div>
-                <div class="product__info">
-                    <h3>Опис</h3>
-                    <p>Большая часть текста сделана из разделов 1.10.32–3 книги Цицерона «На грани Добра и Зла» («De finibus bonorum et malorum»). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit является первой известной человечеству</p>
-                    <p>Большая часть текста сделана из разделов 1.10.32–3 книги Цицерона «На грани Добра и Зла» («De finibus bonorum et malorum»). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit является первой известной человечеству</p>
-                    <p>Большая часть текста сделана из разделов 1.10.32–3 книги Цицерона «На грани Добра и Зла» («De finibus bonorum et malorum»). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit является первой известной человечеству</p>
-                </div>
-            </div>
-            <div class="product__item">
-                <div class="product__image">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/prod/img/about.jpg" alt="">
-                </div>
-                <div class="product__info">
-                    <h3>Опис</h3>
-                    <p>Большая часть текста сделана из разделов 1.10.32–3 книги Цицерона «На грани Добра и Зла» («De finibus bonorum et malorum»). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit является первой известной человечеству</p>
-                    <p>Большая часть текста сделана из разделов 1.10.32–3 книги Цицерона «На грани Добра и Зла» («De finibus bonorum et malorum»). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit является первой известной человечеству</p>
-                    <p>Большая часть текста сделана из разделов 1.10.32–3 книги Цицерона «На грани Добра и Зла» («De finibus bonorum et malorum»). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit является первой известной человечеству</p>
-                </div>
-            </div>
+          <?php  while ( have_rows('review') ) : the_row(); ?>
+              <div class="product__item">
+                  <div class="product__image">
+                      <img src="<?php echo the_sub_field('image_product'); ?>" alt="">
+                  </div>
+                  <div class="product__info">
+                      <h3><?php echo the_sub_field('title_product'); ?></h3>
+                      <?php echo the_sub_field('review_product'); ?>
+                  </div>
+              </div>
+           <?php endwhile; ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
+

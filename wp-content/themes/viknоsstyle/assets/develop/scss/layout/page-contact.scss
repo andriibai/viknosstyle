@@ -1,6 +1,17 @@
 .content-page{
+  .map{
+    width: 50%;
+    @include respond(767){
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
   &__contact{
     @include flex();
     align-items: center;
+    @include respond(767){
+
+      flex-direction: column;
+    }
   }
 }

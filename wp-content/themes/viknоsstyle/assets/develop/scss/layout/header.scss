@@ -1,19 +1,36 @@
 .header{
   position: relative;
   @include gradient;
-
+  margin-bottom: 180px;
+  @include respond(767){
+    margin-bottom: 110px;
+  }
   &__top-contact{
-    //width: 100%;
     display: flex;
     justify-content: flex-end;
+    @include respond(767){
+      display: none;
+    }
     .header__contacts{
       i{
         margin-right: 10px;
+        @include xl-max{
+          margin-right: 0;
+          font-size: 35px;
+        }
       }
       span.phone, span.chat{
         font-size: 20px;
         font-weight: bold;
         color: $white;
+        @include xl-max{
+          font-size: 18px;
+        }
+      }
+      .image-viber{
+        width: 38px;
+        height: 38px;
+        margin-right: 10px;
       }
     }
   }
@@ -21,6 +38,11 @@
   &__btn-contact{
     margin-right: 0;
     background: #272727;
+    @include respond(767){
+      display: none;
+      font-size: 13px;
+      padding: 10px 20px;
+    }
     &:hover{
       background: $grey-hover;
     }
@@ -28,16 +50,20 @@
   &__content{
     padding: 10px 0;
     top: 0;
+    height: 180px;
     position: fixed;
     width: 100%;
     z-index: 10;
     @include gradient;
     box-shadow: 0 0 7px 1px rgba(0,0,0,0.36);
     transition: background 0.5s ease-in-out, height 0.5s ease-in-out;
-    @include lg-max{
-      //border-bottom: none;
+    @include respond(767){
+      display: flex;
+      justify-content: space-between;
+      height: 110px;
     }
     &.js-fixed{
+      //position: fixed;
       border-bottom: none;
       @include gradient;
       box-shadow: 0 0 7px 1px rgba(0,0,0,0.36);
@@ -70,21 +96,31 @@
     img{
       width: 200px;
       margin-bottom: 10px;
+      @include respond(767){
+        width: 180px;
+        margin-bottom: 0;
+      }
     }
   }
   &__overlay {
     display: none;
     position: fixed;
-    top: 125px;
+    top: 170px;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.75);
     z-index: 35;
+    @include respond(767){
+      top: 110px;
+    }
   }
 
   &__text{
     width: 220px;
+    @include lg-max{
+      display: none;
+    }
     span{
       color: $white;
       display: block;
@@ -100,8 +136,11 @@
       font-size: 16px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      font-weight: 400;
-      margin-left: 20px;
+      font-weight: 800;
+      margin-left: 10px;
+      @include xl-max{
+        font-size: 14px;
+      }
     }
   }
 
@@ -111,16 +150,29 @@
     a{
       display: flex;
       align-items: center;
-      margin-left: 40px;
+      margin-left: 35px;
+      @include xl-max{
+        flex-direction: column;
+        margin-left: 25px;
+      }
+      &:first-child{
+        margin-left: 20px;
+      }
     }
     i{
       color: $white;
       font-size: 45px;
     }
   }
-
+  &__top-info{
+    @include respond(767){
+      justify-content: center!important;
+    }
+  }
   &__bottom-info{
-
+    @include respond(767){
+      flex-direction: row-reverse;
+    }
   }
 
   .header__menu-mob{
@@ -200,12 +252,36 @@
       display: block;
     }
   }
+
+  .mob-contact{
+    display: none;
+    color: #fff;
+    padding-left: 8px;
+    margin: 14px 0;
+    i{
+      font-size: 30px;
+      margin-right: 10px;
+    }
+    .phone, .chat{
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .image-viber{
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+    @include respond(767){
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 
 
 .menu{
-  width: 75%;
+  width: 80%;
   margin: 15px 0;
   &__list{
     @include flex();
@@ -270,15 +346,12 @@
     font-size: 16px;
     letter-spacing: 2px;
     padding: 8px 8px;
-    //border-left: 2px solid #000;
-    //border-right: 2px solid #000;
     font-weight: 600;
     position: relative;
     text-transform: uppercase;
     cursor: pointer;
-    @include lg-max{
-      border-left: none;
-      border-right: none;
+    @include xl-max{
+
     }
     &-current{
       &:before{
@@ -304,11 +377,11 @@
       width: 100%;
       position: fixed;
       float: none;
-      top: 70px;
+      top: 155px;
       right: 0;
       padding: 15px 20px;
       z-index: 50;
-      background: $base-red;
+      background: #353535;
       .menu {
         &__list {
           flex-direction: column;
@@ -319,15 +392,21 @@
           display: flex;
           color: #fff;
           font-size: 20px;
-          margin: 14px 0;
+          margin: 10px 0;
           text-transform: capitalize;
         }
       }
     }
   }
+  @include respond(767){
+    top: 95px!important;
+  }
   @include respond(465){
     &.active {
       width: 100% !important;
+      bottom: 0;
+      overflow: auto;
+      margin-bottom: 0;
     }
   }
 }

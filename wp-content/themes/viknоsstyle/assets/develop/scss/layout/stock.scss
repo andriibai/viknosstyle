@@ -1,8 +1,9 @@
 .stock{
   //height: 100vh;
-  padding: 0;
   position: relative;
-  margin-top: 150px;
+  //padding-top: 178px;
+  padding-top: 0;
+  padding-bottom: 0;
   @include respond(767){
     height: auto;
   }
@@ -12,9 +13,9 @@
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -65%);
     @include sm-max{
-      padding: 135px 0 95px;
+      padding: 100px 0 95px;
     }
   }
   &__content{
@@ -43,6 +44,9 @@
   &__image{
     img{
       height: 650px;
+      @include respond(767){
+        max-height: 400px;
+      }
     }
     &:before{
       content: "";
@@ -60,9 +64,7 @@
     z-index: 1;
     //padding-bottom: 160px;
     @include sm-max{
-      width: 87%;
       padding-bottom: 40px;
-
     }
     h1 {
       color: #fff;
@@ -74,6 +76,9 @@
         font-size: 30px;
         margin-bottom: 25px;
       }
+      @include xs-max{
+        font-size: 18px;
+      }
     }
   }
     &__descr-top{
@@ -81,24 +86,37 @@
       font-size: 16px;
       margin-bottom: 25px;
       text-transform: uppercase;
+      @include xs-max{
+        font-size: 16px;
+      }
     }
     &__descr-bottom {
       color: #fff;
       font-size: 22px;
       font-weight: 600;
       margin-bottom: 40px;
+      width: 100%;
       
       @include lg-max {
         font-size: 18px;
         margin-bottom: 30px;
       }
     }
+    .btn-slider-wrap{
+      position: relative;
+      text-align: center;
+    }
     &__btn-contact {
       background: $light-red;
-      //border: 1px solid #fff;
       color: #fff;
       font-weight: 600;
       box-shadow: 0 8px 9px 0 rgba(96, 94, 94, .17);
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
       cursor: pointer;
     }
 
@@ -129,6 +147,9 @@
       border-radius: 50px;
       box-sizing: border-box;
       z-index: 2;
+      @include respond(767){
+        top: -77px;
+      }
       &:before{
         position: absolute;
         top: 10px;

@@ -7,8 +7,9 @@
         <button type="submit" class="form__btn btn">Відправити</button>
     </form>
 </div>
+
 <div class="thank">
-    <div class="thank__title">Спасибо!</div>
+    <div class="thank__title">Дякуємо!</div>
 </div>
 <div class="overlay"></div>
 

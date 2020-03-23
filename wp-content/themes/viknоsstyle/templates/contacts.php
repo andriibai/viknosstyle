@@ -1,7 +1,4 @@
 <section id="contacts" class="contacts">
-<!--    <div class="circle-bg"></div>-->
-<!--    <div class="circle-bg-2"></div>-->
-
     <div class="wrapper">
         <h2 class="title">Contact Us</h2>
         <div class="contacts__content">

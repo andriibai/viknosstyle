@@ -58,7 +58,7 @@ gulp.task('php', function () {
 
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: 'http://localhost/viknastyle/',
+        proxy: 'http://localhost/wordpress/',
         notify: false
     });
 });

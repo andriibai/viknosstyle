@@ -1,113 +1,54 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     /*=========================POPUP===================================*/
-    $(document).on('click','.popup__btn',function(){
+    $(document).on('click', '.popup__btn', function () {
         $('.popup__content').fadeIn(300);
         $('.overlay').fadeIn(300);
     });
 
-    $(document).on('click','.popup__close',function(){
+    $(document).on('click', '.popup__close', function () {
         $('.popup__content').fadeOut(300);
         $('.overlay').fadeOut(300);
     });
 
-    $(document).on('click','.overlay',function(){
+    $(document).on('click', '.overlay', function () {
         $('.popup__content').fadeOut(300);
         $('.overlay').fadeOut(300);
     });
 
-    $(document).on('keydown', function(e) {
+    $(document).on('keydown', function (e) {
         if (e.keyCode == 27) {
             $('.popup__content').fadeOut(300);
             $('.overlay').fadeOut(300);
         }
     });
 
-    /*===========================SCROLL SPY=============================*/
-    $(window).on('scroll', function () {
-        var sections = $('section');
-        var nav = $('.menu');
-        var navHeight = nav.outerHeight();
-        var curPos = $(this).scrollTop();
-        sections.each(function() {
-            var top = $(this).offset().top - navHeight;
-            var bottom = top + $(this).outerHeight();
-
-            if (curPos >= top && curPos <= bottom) {
-                nav.find('a').removeClass('menu__link-current');
-                //sections.removeClass('active');
-                //$(this).addClass('menu__link-current');
-                nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('menu__link-current');
-            }
-
-        });
-    });
-
-    /*============================MENU LINK=============================*/
-    var menuLink = $('.menu__list .menu__item .menu__link');
-    menuLink.click(function(e){
-        var href = $(this).attr('href'),
-            offsetTop = href === "#" ? 0 : $(href).offset().top;
-        $('html, body').stop().animate({
-            scrollTop: offsetTop
-        }, 700);
-        e.preventDefault();
-    });
-
-    var linkDot = $('.menu__list .menu__item');
-    linkDot.hover(function () {
-        if (window.innerWidth > 747){
-            $(this).addClass('menu__item-dot');
-        }
-    }, function () {
-        if (window.innerWidth > 747) {
-            $(this).removeClass('menu__item-dot');
-        }
-    });
-
-    /*========================HEADER FIXED================================*/
-    var headerResize = $('.header__content').data('header-resize');
-    if (headerResize == 1) {
-        $(window).bind('scroll', toggleNavClass);
-    }
-    function toggleNavClass() {
-        var scrollTop = $(window).scrollTop();
-        $('.header__content').toggleClass('js-fixed', scrollTop > 100);
-    }
-
     /*==========================MOBILE MENU==============================*/
     var nav = $('.header__menu');
     var menuMobLink = $('.header__menu-mob');
     var overlay = $('.header__overlay');
-    menuMobLink.click(function(e) {
+    menuMobLink.click(function (e) {
         e.preventDefault();
         menuMobLink.toggleClass('open');
         nav.toggleClass('active');
+        $('body').toggleClass('noscroll');
         //hederfixed.addClass('fixed');
 
-        if (menuMobLink.hasClass('open')){
+        if (menuMobLink.hasClass('open')) {
             overlay.fadeIn(600);
-        } else{
+        } else {
             overlay.fadeOut(600);
         }
     });
 
-    overlay.click(function(e){
+    overlay.click(function (e) {
         e.preventDefault();
         menuMobLink.removeClass('open');
         overlay.fadeOut(600);
         nav.toggleClass('active');
     });
 
-    var menuLink = $('.menu__list .menu__item .menu__link');
-    menuLink.on('click', function (e){
-        e.preventDefault();
-        menuMobLink.removeClass('open');
-        overlay.fadeOut(600);
-        nav.toggleClass('active');
-    });
-
-    $(document).on('keydown', function(e) {
+    $(document).on('keydown', function (e) {
         if (e.keyCode == 27) {
             menuMobLink.removeClass('open');
             overlay.fadeOut(600);
@@ -117,46 +58,59 @@ $(document).ready(function() {
 
     /*=========================BUTTON TOP===============================*/
     var btnTop = $('.button__top');
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(window).scrollTop() > 300) {
             btnTop.addClass('show');
         } else {
             btnTop.removeClass('show');
         }
     });
-    btnTop.on('click', function(e) {
+    btnTop.on('click', function (e) {
         e.preventDefault();
-        $('html, body').animate({scrollTop:0}, '300');
+        $('html, body').animate({scrollTop: 0}, '300');
     });
 
 
     /*=========================BUTTONS DOWN==============================*/
-    var btnContact = $('.about__btn-contact');
-    btnContact.click(function() {
-        $('html,body').animate({
-                scrollTop: $("#contacts").offset().top},
-            'slow');
-    });
+    var marginTop;
+    if ($(window).width() < 768) {
+        marginTop = 110;
+    }
+    else{
+        marginTop = 140;
+    }
 
     var btnDown = $('.button__down');
-    btnDown.click(function() {
+    btnDown.click(function () {
         $('html,body').animate({
-                scrollTop: $("#services").offset().top},
+                scrollTop: $("#catalog").offset().top - marginTop
+            },
             'slow');
     });
 
+    var menuCatalog = $('.menu__link').parent('.catalog');
+    menuCatalog.click(function () {
+        $('.header__menu-mob').removeClass('open');
+        overlay.fadeOut(600);
+        nav.toggleClass('active');
+        $('html,body').animate({
+                scrollTop: $("#catalog").offset().top - marginTop
+            },
+            'slow');
+    });
 
     $('.stock__slider').owlCarousel({
-        autoplay: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
         center: true,
         //stagePadding: 200,
         //margin:90,
         //autoWidth: true,
-        items:1,
-        dots:false,
-        loop:true,
-        responsive:{
-            600:{
+        items: 1,
+        dots: false,
+        loop: true,
+        responsive: {
+            600: {
                 //items:4
             }
         }
