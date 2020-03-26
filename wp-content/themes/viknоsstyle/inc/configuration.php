@@ -85,20 +85,6 @@ function wp_IEhtml5_js () {
 }
 add_action('wp_head', 'wp_IEhtml5_js');
 
-// Contact form 7 remove AUTOTOP
-if(defined('WPCF7_VERSION')) {
-    function maybe_reset_autop( $form ) {
-        $form_instance = WPCF7_ContactForm::get_current();
-        $manager = WPCF7_ShortcodeManager::get_instance();
-        $form_meta = get_post_meta( $form_instance->id(), '_form', true );
-        $form = $manager->do_shortcode( $form_meta );
-        $form_instance->set_properties( array(
-            'form' => $form
-        ) );
-        return $form;
-    }
-    add_filter( 'wpcf7_form_elements', 'maybe_reset_autop' );
-}
 /* ACF Repeater Styles */
 function acf_repeater_even() {
     $scheme = get_user_option( 'admin_color' );
@@ -151,7 +137,6 @@ function remove_jquery_migrate( $scripts ) {
         }
     }
 }
-
 add_action( 'wp_default_scripts', 'remove_jquery_migrate' );
 
 //function load_custom_scripts() {

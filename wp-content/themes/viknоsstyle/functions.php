@@ -27,6 +27,10 @@ require_once 'inc/custom-functions.php';
 // Include theme hooks
 require_once __DIR__ . '/inc/theme-hooks.php';
 
+//Contact form
+require_once 'inc/email.php';
+
+
 
 
 

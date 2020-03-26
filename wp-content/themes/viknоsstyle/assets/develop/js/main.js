@@ -27,12 +27,12 @@ $(document).ready(function () {
     var nav = $('.header__menu');
     var menuMobLink = $('.header__menu-mob');
     var overlay = $('.header__overlay');
+    var body = $('body');
     menuMobLink.click(function (e) {
         e.preventDefault();
         menuMobLink.toggleClass('open');
         nav.toggleClass('active');
-        $('body').toggleClass('noscroll');
-        //hederfixed.addClass('fixed');
+        body.toggleClass('noscroll');
 
         if (menuMobLink.hasClass('open')) {
             overlay.fadeIn(600);
@@ -46,6 +46,7 @@ $(document).ready(function () {
         menuMobLink.removeClass('open');
         overlay.fadeOut(600);
         nav.toggleClass('active');
+        body.toggleClass('noscroll');
     });
 
     $(document).on('keydown', function (e) {
@@ -93,6 +94,7 @@ $(document).ready(function () {
         $('.header__menu-mob').removeClass('open');
         overlay.fadeOut(600);
         nav.toggleClass('active');
+        body.toggleClass('noscroll');
         $('html,body').animate({
                 scrollTop: $("#catalog").offset().top - marginTop
             },
@@ -105,15 +107,15 @@ $(document).ready(function () {
         center: true,
         //stagePadding: 200,
         //margin:90,
-        //autoWidth: true,
         items: 1,
+        //autoWidth: true,
         dots: false,
         loop: true,
-        responsive: {
-            600: {
-                //items:4
-            }
-        }
+        // responsive: {
+        //     600: {
+        //         //items:4
+        //     }
+        // }
     });
 
     $(".js-mask").inputmask({mask: "+38 (999) 999 9999"});

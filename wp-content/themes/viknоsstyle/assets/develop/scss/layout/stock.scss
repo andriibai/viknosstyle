@@ -45,7 +45,7 @@
     img{
       height: 650px;
       @include respond(767){
-        max-height: 400px;
+        max-height: 450px;
       }
     }
     &:before{
@@ -62,16 +62,24 @@
   &__text {
     text-align: center;
     z-index: 1;
-    //padding-bottom: 160px;
+    margin: 0 auto;
+    max-width: 95%;
     @include sm-max{
       padding-bottom: 40px;
     }
     h1 {
       color: #fff;
-      font-size: 40px;
-      font-weight: 700;
+      font-size: 30px;
+      font-weight: 600;
       margin-bottom: 25px;
       text-transform: uppercase;
+      padding: 10px 5px;
+      text-shadow: 1px 1px 2px black, 0 0 2em #d21323;
+      background-image: linear-gradient(150deg,#d21323,#8830386e);
+      p{
+        text-align: center;
+        margin-bottom: 0;
+      }
       @include lg-max {
         font-size: 30px;
         margin-bottom: 25px;
@@ -86,6 +94,9 @@
       font-size: 16px;
       margin-bottom: 25px;
       text-transform: uppercase;
+      p{
+        text-align: center;
+      }
       @include xs-max{
         font-size: 16px;
       }
@@ -96,7 +107,12 @@
       font-weight: 600;
       margin-bottom: 40px;
       width: 100%;
-      
+      padding: 8px 5px;
+      background-image: linear-gradient(150deg,#27272775,#272727);
+      p{
+        text-align: center;
+        margin-bottom: 0;
+      }
       @include lg-max {
         font-size: 18px;
         margin-bottom: 30px;
